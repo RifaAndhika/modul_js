@@ -1,0 +1,81 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Handling</title>
+</head>
+<body>
+    <h1>Event Handling</h1>
+    <button onclick="getClick()">click me</button>
+    <button id="submit">click me</button>
+
+    <script>
+        function getClick (){
+            alert('hello World');
+        }
+
+        const button = document.getElementById('submit');
+
+        button.addEventListener('click' , () => {
+            alert('hello World');
+        });
+
+        button.addEventListener('mouseout', () => {
+            alert('mouse out');
+        });
+
+      
+
+    </script>
+
+</body>
+</html>
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chalenge</title>
+</head>
+<body>
+        <h1>chalenge</h1>
+        <input type="text" id="inputText">
+        <button id="buttonSubmit">submit</button>
+        <ul id="item-list">itemlist</ul>
+
+        <script>
+        
+        document.getElementById('buttonSubmit').addEventListener('click', () => {
+            const inputText = document.getElementById('inputText').value;
+    
+            if(inputText === "")  return;
+
+            const li = document.createElement('li');
+            li.textContent = inputText;
+
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = "delete";
+            deleteButton.addEventListener('click', () =>{
+                li.remove();
+
+            })
+
+            li.appendChild(deleteButton);
+            
+            document.getElementById('item-list').appendChild(li);
+
+            document.getElementById('inputText').value = '';
+            
+        });
+
+   
+    
+
+
+        </script>
+
+</body>
+</html>

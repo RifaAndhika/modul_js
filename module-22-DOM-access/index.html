@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Access</title>
+</head>
+<body>
+    
+    <h1 id="title">Hello World</h1>
+    <p class= "paragraph">ini paragraph</p>
+    <ul>
+        <li class="list">item 1</li>
+        <li id="text-2">item 2</li>
+        <li>item 3</li>
+    </ul>
+
+    <script>
+        // document.getElementById
+        const title = document.getElementById('title');
+        console.log(title);
+
+        // document.getElementsByClassName
+        const paragraph = document.getElementsByClassName('paragraph');
+        console.log(paragraph);
+        
+        //document.getElementsByTagName
+        const list = document.getElementsByTagName('li');
+        console.log(list);
+
+        //document.querySelector ini mengambil satu element yang pertama
+        const element = document.querySelector('li');
+        console.log(element);
+
+        //document.querySelectorAll ini mengambil semua element
+        const elements = document.querySelectorAll('#text-2');
+      
+        console.log(elements);
+
+    </script>
+
+</body>
+</html>

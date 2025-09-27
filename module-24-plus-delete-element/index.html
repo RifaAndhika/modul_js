@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>DOM Tambah dan Hapus Element</title>
+        </head>
+        <body>
+                <h1 id="title">Menambah dan menghapus element</h1>
+                <ul id="list">
+                    <li>ini item 1</li>
+                    <li>ini item 2</li>
+                    <li id="item-3">ini item 3</li>
+                </ul>
+
+                <script>
+                    const newDiv = document.createElement('div');
+                    newDiv.textContent = 'ini div baru';
+                    console.log(newDiv);
+                    //menggunakan appendChild menambah element di akhir
+                    document.body.appendChild(newDiv);
+
+                    // // menggunakan insertBefore menambah element di awal
+                    const title = document.getElementById('title');
+                    document.body.insertBefore(newDiv, list);
+
+
+                    const newLi = document.createElement('li');
+                    newLi.textContent = ('ini li baru');
+
+
+                    const parents = document.getElementById('list');
+                    parents.appendChild(newLi);
+
+                    const item3 = document.getElementById('item-3');
+                    parents.insertBefore(newLi, item3);
+
+                    //menghapus element
+                    document.body.removeChild(title);
+                    parents.removeChild(item3);
+
+
+                    
+                </script>
+        </body>
+</html>

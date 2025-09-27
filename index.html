@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Config App dengan IIFE</title>
+</head>
+<body>
+  <h2>Demo Config App</h2>
+  <button id="showKey">Tampilkan API Key</button>
+  <button id="showUrl">Tampilkan API URL</button>
+  <p id="output"></p>
+
+  <script>
+    // IIFE untuk konfigurasi aplikasi
+    const configApp = (function(){
+      const apiKey = "SECRET-12345";      // variabel privat
+      const apiUrl = "https://api.example.com"; // variabel privat
+
+      return {
+        getApiKey: function(){
+          return apiKey;
+        },
+        getApiUrl: function(){
+          return apiUrl;
+        }
+      }
+    })();
+
+    // Event listener tombol
+    const output = document.getElementById("output");
+
+    document.getElementById("showKey").addEventListener("click", function(){
+      output.textContent = "API Key: " + configApp.getApiKey();
+    });
+
+    document.getElementById("showUrl").addEventListener("click", function(){
+      output.textContent = "API URL: " + configApp.getApiUrl();
+    });
+  </script>
+</body>
+</html>

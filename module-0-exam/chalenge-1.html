@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>challege-1</title>
+</head>
+<body>
+    <input type="text" id="itemInput" placeholder="Masukkan barang...">
+    <button id="addItem">Add</button>
+    <button id="clearAll">Clear All</button>
+    <ul id="shoppingList"></ul>
+
+
+<script>
+    document.getElementById('addItem').addEventListener('click', () =>{
+        const itemInput = document.getElementById('itemInput').value;
+
+        if(itemInput === "") return;
+
+        const li = document.createElement('li');
+        li.textContent = itemInput;
+
+        
+        const buttonBought = document.createElement('button');
+        buttonBought.textContent = 'Bought';
+        buttonBought.addEventListener('click', () =>{
+            li.style.color = 
+                li.style.color === "blue" ? "black" : "blue";
+            li.style.textDecoration = 
+                li.style.textDecoration === "line-through" ? "none" : "line-through";
+
+        });
+        const buttonDelete = document.createElement('button');
+        buttonDelete.textContent = 'Delete';
+        buttonDelete.addEventListener('click', () => {
+            li.remove();
+            
+        });
+
+        document.getElementById('clearAll').addEventListener('click', () =>{
+            li.remove();
+        })
+
+
+        li.appendChild(buttonBought);
+        li.appendChild(buttonDelete);
+
+        document.getElementById('shoppingList').appendChild(li);
+        document.getElementById('itemInput').value = '';
+
+
+        
+    })
+</script>
+
+</body>
+</html>
