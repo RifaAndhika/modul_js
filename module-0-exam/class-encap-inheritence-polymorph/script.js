@@ -1,18 +1,21 @@
-// Parent Class
+// Abstract Class (tidak untuk langsung dipakai)
 class Employee {
-  #salary; // encapsulation
+  #salary; // Encapsulation
 
   constructor(name, baseSalary) {
+    if (new.target === Employee) {
+      throw new Error("Employee is an abstract class and cannot be instantiated directly!");
+    }
     this.name = name;
     this.#salary = baseSalary;
   }
 
-  // Getter (read only)
+  // Getter (read-only)
   get salary() {
     return this.#salary;
   }
 
-  // Protected method (simulasi, biasanya buat subclass pakai)
+  // Protected method (hanya untuk subclass pakai)
   _setSalary(amount) {
     if (amount > 0) {
       this.#salary = amount;
@@ -21,20 +24,19 @@ class Employee {
     }
   }
 
-  // Polymorphism → akan dioverride di subclass
+  // Abstract Method → harus dioverride
   calculateBonus() {
-    return this.#salary * 0.05; // default bonus 5%
+    throw new Error("Subclass must implement calculateBonus()");
   }
 }
 
 // Subclass Manager
 class Manager extends Employee {
   constructor(name, baseSalary, teamSize) {
-    super(name, baseSalary); // inheritance
+    super(name, baseSalary);
     this.teamSize = teamSize;
   }
 
-  // Polymorphism → override method
   calculateBonus() {
     return this.salary * 0.1 + this.teamSize * 100000;
   }
@@ -47,7 +49,6 @@ class Engineer extends Employee {
     this.level = level;
   }
 
-  // Polymorphism → override method
   calculateBonus() {
     return this.salary * (this.level === "senior" ? 0.15 : 0.07);
   }
@@ -60,14 +61,13 @@ class Intern extends Employee {
     this.durationMonths = durationMonths;
   }
 
-  // Polymorphism → override method
   calculateBonus() {
     return this.salary * 0.02 * this.durationMonths;
   }
 }
 
-// -----------------------------------
-// Simulasi penggunaan di perusahaan
+// -----------------------------
+// Simulasi penggunaan
 const employees = [
   new Manager("Andhika", 20000000, 5),
   new Engineer("Rifa", 15000000, "senior"),
@@ -80,3 +80,6 @@ employees.forEach(emp => {
     `${emp.name} | Salary: Rp${emp.salary} | Bonus: Rp${emp.calculateBonus()}`
   );
 });
+
+// ❌ Kalau coba langsung
+// const e = new Employee("Test", 1000000); // Error!
