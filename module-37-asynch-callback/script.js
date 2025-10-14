@@ -3,11 +3,11 @@ function userData(callback){
     
     setTimeout(() => {
         const user = {name: "Rifaa", age: 20};
-        callback(user);
+        callback(null, user);
     }, 3000);
 }
 
-function displayUser(user){
+function displayUser(error, user){
     console.log(`Hello ${user.name}, you are ${user.age} years old`);
 }
 
