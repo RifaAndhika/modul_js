@@ -8,7 +8,7 @@ function dataBase(data){
             const datas  = {
                 "kursi": 321,
                 "bakso": 321,
-                "rumah": 3,
+                "rumah": 0,
                 "motor": 45,
                 "mobil": 87,
             
@@ -28,21 +28,13 @@ function dataBase(data){
 
 async function getData(){
     try {
-        const datases = await Promise.allSettled([
-           
-            dataBase('kursi'),
+        const result = await Promise.all([
+            dataBase('rumah'),
+
         ]);
-
-        datases.forEach(result => {
-            if (result.status === 'fulfilled') {
-                console.log(result.value);
-            }else{
-                console.error(result.reason);
-            }
-        });
-
-    }catch (error) {
-        console.error(`Error: ${error.message}`);
+        console.log(result);
+    } catch (error) {
+        console.error(error);   
     }
 }
 
